@@ -5,6 +5,10 @@ id = "amp"
 path = "amp.toml"
 
 [[agents]]
+id = "axet-code"
+path = "axet-code.toml"
+
+[[agents]]
 id = "agy"
 path = "antigravity.toml"
 

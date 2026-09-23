@@ -44,6 +44,7 @@ pub enum Agent {
     Pi,
     Claude,
     Codex,
+    AxetCode,
     Gemini,
     Cursor,
     Devin,
@@ -68,10 +69,11 @@ pub enum Agent {
 }
 
 impl Agent {
-    pub const ALL: [Self; 24] = [
+    pub const ALL: [Self; 25] = [
         Self::Pi,
         Self::Claude,
         Self::Codex,
+        Self::AxetCode,
         Self::Gemini,
         Self::Cursor,
         Self::Devin,
@@ -95,10 +97,11 @@ impl Agent {
         Self::Muse,
     ];
 
-    pub const SCREEN_MANIFEST_AGENTS: [Self; 22] = [
+    pub const SCREEN_MANIFEST_AGENTS: [Self; 23] = [
         Self::Pi,
         Self::Claude,
         Self::Codex,
+        Self::AxetCode,
         Self::Gemini,
         Self::Cursor,
         Self::Devin,
@@ -126,6 +129,7 @@ pub fn agent_label(agent: Agent) -> &'static str {
         Agent::Pi => "pi",
         Agent::Claude => "claude",
         Agent::Codex => "codex",
+        Agent::AxetCode => "axet-code",
         Agent::Gemini => "gemini",
         Agent::Cursor => "cursor",
         Agent::Devin => "devin",
@@ -155,6 +159,7 @@ pub fn interactive_agent_executable(agent: Agent) -> &'static str {
         Agent::Pi => "pi",
         Agent::Claude => "claude",
         Agent::Codex => "codex",
+        Agent::AxetCode => "axet-code",
         Agent::Gemini => "gemini",
         Agent::Cursor => {
             if cfg!(windows) {
@@ -201,6 +206,7 @@ fn lookup_agent(name: &str) -> Option<Agent> {
         "pi" => Some(Agent::Pi),
         "claude" | "claude-code" => Some(Agent::Claude),
         "codex" => Some(Agent::Codex),
+        "axet-code" | "axetcode" => Some(Agent::AxetCode),
         "gemini" => Some(Agent::Gemini),
         "cursor" | "cursor-agent" => Some(Agent::Cursor),
         "devin" | "devin-cli" | "devin cli" => Some(Agent::Devin),
@@ -1000,6 +1006,7 @@ mod tests {
             (Agent::Pi, "pi"),
             (Agent::Claude, "claude"),
             (Agent::Codex, "codex"),
+            (Agent::AxetCode, "axet-code"),
             (Agent::Gemini, "gemini"),
             (
                 Agent::Cursor,
